@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Header from "../components/layouts/Home/Header";
 import Main from "../components/layouts/Home/Main";
-import Footer from "../components/layouts/Home/Footer";
+import Footer from "../components/atoms/Footer";
 
 const Accuil = styled.div`
   width: 100vw;

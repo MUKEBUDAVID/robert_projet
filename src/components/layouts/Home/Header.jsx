@@ -76,10 +76,17 @@ const Flou = styled.div`
   );
   position: absolute;
 `;
+
+const color ={
+  left:"white",
+  right:"white"
+}
+
+
 const Header = () => {
   return (
     <Headero>
-      <Navigation />
+      <Navigation color={color} />
       <section className="euro_banner">
         Facilite Vous La vie avec<span> Sun Technology Service</span>{" "}
       </section>
