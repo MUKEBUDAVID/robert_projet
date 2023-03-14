@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import Navigation from '../components/atoms/Navigation';
 
 const color ={
@@ -6,11 +7,13 @@ const color ={
     right:"black"
   }
 
-  const Hea
+  const Header=styled.header`
+    color:red;
+  `
 const Service = () => {
     return (
         <div>
-           <header><Navigation color={color}/></header>
+           <Header><Navigation color={color}/></Header>
               
            
         </div>
