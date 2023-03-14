@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import { createGlobalStyle } from "styled-components";
 
+
 const Globalstyle = createGlobalStyle`
    *,
 *::after,

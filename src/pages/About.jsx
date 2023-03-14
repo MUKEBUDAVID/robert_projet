@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Navigation from "../components/atoms/Navigation";
 import img from "../assets/About_img.png";
 import Footer from "../components/atoms/Footer";
+import { NavLink } from "react-router-dom";
 const Aboute = styled.div`
   display: flex;
   flex-direction: column;
@@ -103,7 +104,12 @@ const Aside = styled.aside`
       color: #ffffff;
     }
 
-    button {
+   
+  }
+`;
+
+const Button=styled(NavLink)`
+ 
       width: 250px;
       height: 80px;
       margin-top: 100px;
@@ -124,10 +130,11 @@ const Aside = styled.aside`
       position: relative;
       overflow: hidden;
       z-index: 1;
+      text-decoration:none;
       cursor: pointer;
-    }
+    
 
-    button::before {
+    &::before {
       content: "";
       width: 250px;
       height: 80px;
@@ -141,14 +148,14 @@ const Aside = styled.aside`
       z-index: -1;
     }
 
-    button:hover::before {
+    &:hover::before {
       transform: translateX(250px);
     }
-    button:hover {
+    &:hover {
       color: #a91079;
     }
-  }
-`;
+  
+`
 
 const About = () => {
   const color = {
@@ -188,7 +195,7 @@ const About = () => {
                 son pouvoir de façonner le changement stratégique,
                 organisationnel, économique.
               </p>
-              <button>NOUS CONTACTER</button>
+              <Button to="/Contact">NOUS CONTACTER</Button>
             </div>
           </Aside>
         </Text>

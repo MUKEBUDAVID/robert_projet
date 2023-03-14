@@ -1,9 +1,18 @@
 import React from 'react';
+import Navigation from '../components/atoms/Navigation';
 
+const color ={
+    left:"black",
+    right:"black"
+  }
+
+  const Hea
 const Service = () => {
     return (
         <div>
-            Service
+           <header><Navigation color={color}/></header>
+              
+           
         </div>
     );
 }

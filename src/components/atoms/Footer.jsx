@@ -9,7 +9,7 @@ const Footeur = styled.footer`
   flex-direction: column;
   align-items: center;
 `;
-const Fouter_top = styled.div`
+const FouterTop = styled.div`
   width: 100vw;
   height: 250px;
   /* background-color: yellow; */
@@ -151,7 +151,7 @@ const Botton = styled.p`
 const Footer = () => {
   return (
     <Footeur>
-      <Fouter_top>
+      <FouterTop>
         <Left>
           <h1>Newslatter</h1>{" "}
           <div>
@@ -199,7 +199,7 @@ const Footer = () => {
             </Lione>
           </List>
         </Right>
-      </Fouter_top>
+      </FouterTop>
 
       <Hr />
 

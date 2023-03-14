@@ -14,6 +14,10 @@ import styled from "styled-components";
   align-items: center;
   padding: 0px;
   margin-top:10px;
+
+  .active{
+    color:#fd00f5; 
+  }
   `;
   const Linkone = styled(NavLink)`
   text-decoration: none;
@@ -58,10 +62,10 @@ const Navigation = ({color}) => {
   
   return (
     <Nav>
-      <Linkone to="/" $color={color}>Home</Linkone>
-      <Linkone to="/Service"  $color={color}>Service</Linkone>
-      <Linktwo to="/About" $color={color}>About</Linktwo>
-      <Linktwo to="/Contact" $color={color}>Contact</Linktwo>
+      <Linkone to="/" $color={color} className={(nav)=>(nav.isActive? "active":"")}>Home</Linkone>
+      <Linkone to="/Service"  $color={color} className={(nav)=>(nav.isActive? "active":"")}>Service</Linkone>
+      <Linktwo to="/About" $color={color} className={(nav)=>(nav.isActive? "active":"")}>About</Linktwo>
+      <Linktwo to="/Contact" $color={color} className={(nav)=>(nav.isActive? "active":"")}>Contact</Linktwo>
     </Nav>
   );
 };

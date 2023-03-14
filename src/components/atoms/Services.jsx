@@ -79,8 +79,35 @@ const Central = styled.div`
     text-align: center;
 
     color: #f0f0f6;
+    overflow:hidden;
+    z-index: 1;
+    
   }
+  aside span::before {
+    content:"";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* border: 10px solid rgba(231, 220, 220, 0.86); */
+    border-radius: 69px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:rgba(231, 220, 220, 0.86);
+    transition: 0.5s ease all;
+     left:-190px;
+     z-index: -1;
+  }
+  aside span:hover::before{
+    transform: translateX(190px)
+
+  }
+  aside span:hover {
+      color:transparent;
+    }
+
 `;
+
 const Services = () => {
   return (
     <Serve>

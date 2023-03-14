@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Navigation from "../components/atoms/Navigation";
 import icon_flache from "../assets/fleche.svg";
@@ -22,7 +22,7 @@ const Haeder = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: green;
+  /* background-color: green; */
 `;
 
 const Main = styled.main`
@@ -61,33 +61,35 @@ const Left = styled.div`
   }
 `;
 const Reseaux = styled.aside`
-  margin-bottom: 70px;
+  margin-bottom: 40px;
   width: 100%;
-  height: 300px;
+  height: 350px;
   /* background-color: dodgerblue; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  div:active,div:focus {
+  button:active,
+  button:focus {
     width: 70%;
     height: 50px;
     display: flex;
     flex-direction: row;
-    align-items:center;
+    align-items: center;
     background: rgba(87, 10, 87, 0.5);
     border: 1.79583px solid #a91079;
     border-radius: 9.57778px;
   }
-  div {
+  button {
     width: 70%;
     height: 50px;
-    /* background-color:black; */
+    background-color:transparent;
     display: flex;
     flex-direction: row;
-    align-items:center;
+    align-items: center;
+    border:0px solid transparent;
   }
-  div span {
+  button span {
     margin-left: 30px;
     font-family: "Poppins";
     font-style: normal;
@@ -130,18 +132,18 @@ const Right = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const Input = styled.div`
+const Input = styled.form`
   width: 100%;
-  height: 65%;
+  height: 85%;
   /* background-color:silver; */
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 
   input {
     width: 80%;
-    height: 20%;
+    height: 15%;
     border: 0px solid transparent;
     border-bottom: 3px solid #a91079;
     padding-top: 10px;
@@ -169,13 +171,12 @@ const Input = styled.div`
 `;
 
 const Button = styled.button`
-  width: 188.57px;
+  width: 38%;
   height: 46.73px;
   background: #a91079;
   border-radius: 9.57778px;
   border: 0px solid transparent;
-  margin-right: 230px;
-  margin-top: 20px;
+  /* margin-right: 230px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -203,23 +204,50 @@ const Button = styled.button`
   }
 `;
 
-function Contact  ()  {
+function Contact() {
+  const [form, setform] = useState({});
+  const [conct, setconct] = useState("Your Email");
+
+  const requestOptions = {
+    method: "POST", 
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(form),
+  };
+
+  
+
+  const handleFocus = (even) => {
+    even.stopPropagation();
+    even.preventDefault();
+    setconct(even.target.id) ;
     
 
-let conct="Your Email";
+  };
 
-const handleclick = (even) => {
- even.stopPropagation();
- even.preventDefault();
+  const handlesubmit =async (even) => {
+    even.stopPropagation();
+    even.preventDefault();
+   await setform({
+      nom: even.target["nom"].value,
+      adress: even.target["email"].value,
+      message: even.target["message"].value,
+      type:conct
+    });
 
-  console.log(even);
-  
+    
+
+try {
+await fetch("https://example.com/profile",requestOptions)
+
+} catch (error) {
+  console.log(error);
 }
+    
 
-
-
-
-
+    
+  };
 
   return (
     <Contacte>
@@ -234,67 +262,72 @@ const handleclick = (even) => {
           </h1>
 
           <Reseaux>
-            <div tabIndex="9" className="Your Email" onClick={handleclick} >
+            <button tabIndex="1"  onFocus={handleFocus} autofocus="true" id="Your Email ">
               <img src={email} alt="icon_email" />{" "}
               <span>SaulDesign@gmail.com</span>
-            </div>
+            </button>
 
-            <div tabIndex="10" className="Your Phone Number" onClick={handleclick} >
+            <button tabIndex="2"  onFocus={handleFocus} id="Your Phone Number">
               <img src={phone} alt="icon_telephone" /> <span>+123 456 789</span>
-            </div>
+            </button>
 
-            <img
-              src={instagrame}
-              alt="icon_instagrame"
-              className="cercle"
-              tabIndex="11"
-              id="Your Intsta"
-              onClick={handleclick}
-              
-            />
-            <img
-              src={facebook}
-              alt="icon_facebook"
-              className="cercle"
-              tabIndex="12"
-              id="Your Facebook"
-              onClick={handleclick}
-              
-            />
-            <img
-              src={twiter}
-              alt="icon_twiter"
-              className="cercle"
-              tabIndex="13"
-              id="Your Twiter"
-              onClick={handleclick}
-              
-            />
+            <button className="cercle"  onFocus={handleFocus} tabIndex="3" id="Your instagram">
+              <img
+                src={instagrame}
+                alt="icon_instagrame"
+                
+               
+              />
+            </button>
+
+            <button className="cercle" onFocus={handleFocus}  tabIndex="4" id="Your Facebook">
+              <img
+                src={facebook}
+                alt="icon_facebook"
+                
+                
+              />
+            </button>
+
+            <button className="cercle" onFocus={handleFocus} tabIndex="5" id="Your Twiter">
+              <img
+                src={twiter}
+                alt="icon_twiter"
+                
+                
+              />
+            </button>
           </Reseaux>
         </Left>
 
         <Right>
-          <Input>
-            <input type="text" placeholder="Your Name" />
-            <input type="text" placeholder={conct} />
+          <Input onSubmit={handlesubmit}>
+            <input
+              type="text"
+              placeholder="Your Name"
+              name="nom"
+              required
+              style={{}}
+            />
+            <input type="email" placeholder={conct} name="email" required />
             <textarea
               cols="30"
               rows="10"
               placeholder="Your Message"
               maxLength="1000"
               required
+              name="message"
             ></textarea>
+
+            <Button type="submit">
+              <img src={icon_flache} alt="icon_fleche" />
+              <p>Send Message</p>
+            </Button>
           </Input>
-
-          <Button>
-            <img src={icon_flache} alt="icon_fleche" />
-
-            <p>Send Message</p>
-          </Button>
         </Right>
       </Main>
     </Contacte>
   );
-};
+}
 
 export default Contact;
