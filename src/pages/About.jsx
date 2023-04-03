@@ -39,7 +39,7 @@ const Img = styled.section`
 const Text = styled.section`
   width: 100vw;
   height: 1100px;
-  background-color: blue;
+  background-color: #4b5bf9;
   display: flex;
   flex-direction: column;
   justify-content: center;

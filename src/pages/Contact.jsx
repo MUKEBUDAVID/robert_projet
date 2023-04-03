@@ -32,7 +32,7 @@ const Main = styled.main`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  background-color: #313de7;
+  background-color: #4b5bf9;
 `;
 const Left = styled.div`
   width: 40vw;

@@ -6,11 +6,12 @@ import rectangle_1 from "../../assets/Rectangle 13.jpg";
 import jeson from "../../assets/jason-goodman-vbxyFxlgpjM-unsplash.jpg";
 import nice from "../../assets/nice.jpg";
 import rectangle_15 from "../../assets/Rectangle 15.jpg";
+import { NavLink } from "react-router-dom";
 
 const Serve = styled.section`
   width: 100vw;
   height: 725px;
-  background: linear-gradient(180deg, #313DE7 55.21%, rgba(129, 247, 218, 0) 98.11%);
+  background: linear-gradient(180deg, #4b5bf9 55.21%, rgba(129, 247, 218, 0) 98.11%);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -47,7 +48,11 @@ const Central = styled.div`
     align-items: center;
   }
 
-  aside {
+  
+
+`;
+const Aside=styled(NavLink)`
+ 
     width: 297px;
     height: 251px;
     border-radius: 57px;
@@ -56,13 +61,13 @@ const Central = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  aside img {
+  
+  & img {
     width: 100%;
     height: 100%;
     border-radius: 57px;
   }
-  aside span {
+  & span {
     position: absolute;
     width: 70%;
     height: 25%;
@@ -83,7 +88,7 @@ const Central = styled.div`
     z-index: 1;
     
   }
-  aside span::before {
+  & span::before {
     content:"";
     position: absolute;
     width: 100%;
@@ -98,16 +103,15 @@ const Central = styled.div`
      left:-190px;
      z-index: -1;
   }
-  aside span:hover::before{
+  & span:hover::before{
     transform: translateX(190px)
 
   }
-  aside span:hover {
+  & span:hover {
       color:transparent;
     }
-
-`;
-
+  
+`
 const Services = () => {
   return (
     <Serve>
@@ -115,37 +119,37 @@ const Services = () => {
 
       <Central>
         <div>
-          <aside>
+          <Aside to="/Service" title="Click">
             <img src={jest} alt="image_maitenances" />
             <span>Maitenannces</span>
-          </aside>
+          </Aside>
 
-          <aside>
+          <Aside to="/Service" title="Click">
             <img src={rectangle} alt="image_installation" />
             <span>Installation et configuration</span>
-          </aside>
+          </Aside>
 
-          <aside>
+          <Aside to="/Service" title="Click">
             <img src={rectangle_1} alt="image_webmaster" />
             <span>Webmsater</span>
-          </aside>
+          </Aside>
         </div>
 
         <div>
-          <aside>
+          <Aside to="/Service" title="Click">
             <img src={jeson} alt="image_consultation" />
             <span>consultation</span>
-          </aside>
+          </Aside>
 
-          <aside>
+          <Aside to="/Service" title="Click">
             <img src={nice} alt="image_sous_traitances" />
             <span>sous traitances</span>
-          </aside>
+          </Aside>
 
-          <aside>
+          <Aside to="/Service" title="Click">
             <img src={rectangle_15} alt="image_BD" />
             <span>Base de donnne</span>
-          </aside>
+          </Aside>
         </div>
       </Central>
     </Serve>
