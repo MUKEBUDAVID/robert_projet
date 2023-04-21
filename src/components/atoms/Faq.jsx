@@ -56,7 +56,7 @@ const Left = styled.div`
       width: 50px;
       height: 50px;
     }
-    p {
+    .parce {
       width: 80%;
       height: inherit;
     }
@@ -107,46 +107,46 @@ const Faq = () => {
         <ul>
           <li key={"A1M"}>
             <img src={solei} alt="icon_solei" />{" "}
-            <p>
+            <div className="parce">
               <h2>Adjust Lighting</h2>{" "}
               <span>
                 When caring for indoor plants, make sure the room temperature is
                 neither too cold nor too hot
               </span>
-            </p>
+            </div>
           </li>
 
           <li key={"A2M"}>
             <img src={akar} alt="icon_water" />{" "}
-            <p>
+            <div className="parce">
               <h2>Don't water too often</h2>{" "}
               <span>
                 When caring for indoor plants, make sure the room temperature is
                 neither too cold nor too hot
               </span>
-            </p>
+            </div>
           </li>
 
           <li key={"A3M"}>
             <img src={charm} alt="icon_plant" />{" "}
-            <p>
+            <div className="parce">
               <h2>Don't water too often</h2>{" "}
               <span>
                 When caring for indoor plants, make sure the room temperature is
                 neither too cold nor too hot
               </span>
-            </p>
+            </div>
           </li>
 
           <li key={"A4M"}>
             <img src={tabler} alt="icon_temperature" />{" "}
-            <p>
+            <div className="parce">
               <h2>Fertilize regularly</h2>{" "}
               <span>
                 When caring for indoor plants, make sure the room temperature is
                 neither too cold nor too hot
               </span>
-            </p>
+            </div>
           </li>
         </ul>
       </Left>

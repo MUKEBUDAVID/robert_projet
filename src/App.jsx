@@ -4,6 +4,7 @@ import Service from "./pages/Service";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import { createGlobalStyle } from "styled-components";
+import OneService from "./pages/OneService";
 
 
 const Globalstyle = createGlobalStyle`
@@ -32,7 +33,10 @@ function App() {
       <Globalstyle />
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/Service" element={<Service />} />
+      <Route path="/Service" element={<Service />} >
+      <Route path="/Service/:id" element={<Service />} />
+      </Route>
+      <Route path="/oneservice" element={<OneService />} />
       <Route path="/About" element={<About />} />
       <Route path="/Contact" element={<Contact />} />
       <Route path="*" element={<Home />} />

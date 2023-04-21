@@ -4,6 +4,7 @@ import Navigation from "../components/atoms/Navigation";
 import { useState } from "react";
 // import jest from "../assets/jeshoots-com-sMKUYIasyDM-unsplash.jpg";
 import { useFetch } from "../utils/hooks/fetch";
+import { NavLink, useParams } from "react-router-dom";
 const color = {
   left: "black",
   right: "black",
@@ -62,8 +63,13 @@ const Ul = styled.ul`
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
   }
-  li {
-    list-style: none;
+  
+`;
+
+const  StyledLink=styled(NavLink)`
+  
+    
+  text-decoration: none;
 
     height: 50px;
     width: 90%;
@@ -83,7 +89,9 @@ const Ul = styled.ul`
     text-align: center;
 
     color: #f5f5f5;
-  }
+    
+  
+
 `;
 const Source = styled.section`
   grid-column: 5/12;
@@ -97,7 +105,10 @@ const Source = styled.section`
   margin-top: 10px;
   margin-bottom: 50px;
 
-  aside {
+  
+`;
+const Cards=styled(NavLink)`
+
     /* background-color:yellow; */
     border-radius: 10px;
     display: flex;
@@ -108,8 +119,8 @@ const Source = styled.section`
     transition: 700ms ease all;
     overflow: hidden;
     cursor: pointer;
-  }
-  aside:after {
+  
+  &:after {
     content: "";
     display: block;
     position: absolute;
@@ -145,21 +156,23 @@ const Source = styled.section`
     transition: 700ms all;
   }
 
-  aside img {
+   img {
     width: 100%;
     height: 100%;
     border-radius: 10px;
     /* z-index:-1; */
   }
 
-  aside:hover::after {
+  &:hover::after {
     visibility: visible;
   }
 
-  aside:hover section {
+  &:hover section {
     transform: translateY(-70%);
   }
-`;
+
+
+`
 const CenterText = styled.section`
   position: absolute;
   display: flex;
@@ -211,6 +224,12 @@ const CenterText = styled.section`
   }
 `;
 function Service() {
+let {id}=useParams();
+
+
+if (id===undefined) {
+id="Maitenannces";  
+}
   const [active, setactive] = useState({
     li_1: "active",
     li_2: "",
@@ -220,25 +239,22 @@ function Service() {
     li_6: "",
   });
   const [cardData, setcardData] = useState([]);
-  const { data, isLoading, error } = useFetch("./data.json");
-
-  console.log(isLoading);
-
+  const { data, isLoading } = useFetch(`http://localhost:3001/api/stuff/${id}`);
+  
   useEffect(() => {
     if (isLoading === false) {
-        console.log(data);
-
-      setcardData(data.card);
+      setcardData(data);
     }
   });
+
 
   // for change the className
   const changeSelectOnclick = (e) => {
     for (let i = 1; i < 7; ++i) {
-      if (e.target.id == i) {
+      if (parseInt(e.target.id) === i) {
         let test = `li_${i}`;
         setactive({
-          ...active,
+          // ...active,
           li_1: "",
           li_2: "",
           li_3: "",
@@ -249,6 +265,7 @@ function Service() {
         });
       }
     }
+
   };
   return (
     <Servicex>
@@ -257,75 +274,62 @@ function Service() {
       </Header>
       <Aside>
         <Ul>
-          <li
+          <StyledLink   to="/Service/Maitenannces"
             className={active.li_1}
             key={"li_1"}
             id={1}
             onClick={changeSelectOnclick}
           >
             Maitenannces
-          </li>
-          <li
+          </StyledLink>
+          <StyledLink to="/Service/Installationetconfiguration"
             className={active.li_2}
             key={"li_2"}
             id={2}
             onClick={changeSelectOnclick}
           >
             Installation et configuration
-          </li>
-          <li
+          </StyledLink>
+          <StyledLink  to="/Service/Webmsater"
             className={active.li_3}
             key={"li_3"}
             id={3}
             onClick={changeSelectOnclick}
           >
             Webmsater
-          </li>
-          <li
+          </StyledLink>
+          <StyledLink to="/Service/consultation"
             className={active.li_4}
             key={"li_4"}
             id={4}
             onClick={changeSelectOnclick}
           >
             consultation
-          </li>
-          <li
+          </StyledLink>
+          <StyledLink to="/Service/soustraitances"
             className={active.li_5}
             key={"li_5"}
             id={5}
             onClick={changeSelectOnclick}
           >
             sous traitances
-          </li>
-          <li
+          </StyledLink>
+          <StyledLink to="/Service/Basededonnne"
             className={active.li_6}
             key={"li_6"}
             id={6}
             onClick={changeSelectOnclick}
           >
             Base de donnne
-          </li>
+          </StyledLink>
         </Ul>
       </Aside>
       <Source>
-        {/* <aside>
-              <img src={jest} alt="illustraction"  />
-            <CenterText>  
-            <h1>Reparation</h1>
+        
 
-            <span>
-            Check out all of these gorgeous
-             mountain trips with beautiful views 
-             of, you guessed it, the mountains
-            </span>
-
-            <button>View Trips </button>
-            </CenterText>
-             </aside>  */}
-
-        {cardData.map((cards,index) => {
+        {cardData?.map((cards, index) => {
           return (
-            <aside key={`${cards}-${index}`} >
+            <Cards key={`${cards}-${index}`} to="/oneservice">
               <img src={cards.urlimg} alt="illustraction" />
               <CenterText>
                 <h1>{cards.titre}</h1>
@@ -334,8 +338,8 @@ function Service() {
 
                 <button>View Trips </button>
               </CenterText>
-            </aside>
-          )
+            </Cards>
+          );
         })}
       </Source>
     </Servicex>

@@ -262,7 +262,7 @@ await fetch("https://example.com/profile",requestOptions)
           </h1>
 
           <Reseaux>
-            <button tabIndex="1"  onFocus={handleFocus} autofocus="true" id="Your Email ">
+            <button tabIndex="1"  onFocus={handleFocus} autoFocus={true} id="Your Email ">
               <img src={email} alt="icon_email" />{" "}
               <span>SaulDesign@gmail.com</span>
             </button>
