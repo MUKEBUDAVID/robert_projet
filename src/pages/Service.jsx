@@ -239,7 +239,7 @@ id="Maitenannces";
     li_6: "",
   });
   const [cardData, setcardData] = useState([]);
-  const { data, isLoading } = useFetch(`http://localhost:3001/api/stuff/${id}`);
+  const { data, isLoading } = useFetch(`https://robert-backen-projet.onrender.com/api/stuff/${id}`);
   
   useEffect(() => {
     if (isLoading === false) {
